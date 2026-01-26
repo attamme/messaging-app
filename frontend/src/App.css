@@ -1,42 +1,97 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.app-container {
+  display: flex;
+  height: 100vh;
+  background-color: #f0f0f0;
+  color: #333;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.sidebar {
+  width: 112px;
+  background-color: #dbdbdb;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 15px 20px;
+  gap: 20px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.server-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 25px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.add-server {
+	background-color:#768d87;
+	border-radius:5px;
+	border:1px solid #566963;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:11px 23px;
+	text-decoration:none;
+	text-shadow:0px -1px 0px #2b665e;
+}
+.add-server:hover {
+	background-color:#6c7c7c;
+}
+.add-server:active {
+	position:relative;
+	top:1px;
 }
 
-.card {
-  padding: 2em;
+.channel-list {
+  width: 280px;
+  background-color: #e3e3e3;
+  padding: 20px 10px;
+  border-right: 1px solid #ccc;
 }
 
-.read-the-docs {
-  color: #888;
+.chat-area {
+  flex: 1; /* Võtab kogu vaba ruumi */
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+
+.message-container {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.message {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 8px 20px;
+}
+
+.message-profile {
+  width: 67px;
+  height: 67px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.input-container {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+input {
+  width: 100%;
+  max-width: 800px;
+  height: 62px;
+  border-radius: 18px;
+  border: none;
+  background: #B9B9B9;
+  padding: 0 15px;
+  
 }
