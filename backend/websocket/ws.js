@@ -1,5 +1,4 @@
 import { WebSocketServer } from "ws";
-import crypto from "crypto";
 import { verifyToken } from "../config/tokens.js";
 import { pool } from "../config/db.js";
 
@@ -18,12 +17,11 @@ export function attachWs(server) {
   });
 
   wss.on("connection", (ws, req) => {
-    // auth: ws://localhost:5000/ws?token=...
     try {
       const url = new URL(req.url, `http://${req.headers.host}`);
       const token = url.searchParams.get("token");
       const payload = verifyToken(token);
-      ws.userId = payload.sub;
+      ws.userId = payload.sub; // this is user_id (int)
     } catch {
       ws.close(1008, "Unauthorized");
       return;
@@ -38,9 +36,11 @@ export function attachWs(server) {
       if (msg.type === "join") {
         const channelId = String(msg.channelId || "");
         if (!channelId) return;
+
         ws.channels.add(channelId);
         if (!rooms.has(channelId)) rooms.set(channelId, new Set());
         rooms.get(channelId).add(ws);
+
         return send(ws, { type: "joined", channelId });
       }
 
@@ -49,18 +49,22 @@ export function attachWs(server) {
         const content = String(msg.content || "").slice(0, 2000);
         if (!channelId || !content) return;
 
-        const id = crypto.randomUUID();
-        await pool.query(
-          "INSERT INTO messages (id, channel_id, user_id, content) VALUES (?, ?, ?, ?)",
-          [id, channelId, ws.userId, content]
+        const [result] = await pool.query(
+          "INSERT INTO messages (content, channels_fk, users_fk) VALUES (?, ?, ?)",
+          [content, channelId, ws.userId]
         );
 
-        const [u] = await pool.query("SELECT username FROM users WHERE id = ? LIMIT 1", [ws.userId]);
+        const [u] = await pool.query(
+          "SELECT username FROM users WHERE user_id = ? LIMIT 1",
+          [ws.userId]
+        );
 
         const payload = {
           type: "message:new",
           message: {
-            id, channelId, content,
+            id: result.insertId,
+            channelId: Number(channelId),
+            content,
             userId: ws.userId,
             username: u[0]?.username || "unknown",
             createdAt: new Date().toISOString()
