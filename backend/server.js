@@ -15,6 +15,6 @@ app.use("/api", routes);
 const server = http.createServer(app);
 attachWs(server);
 
-server.listen(process.env.PORT || 5000, () => {
+server.listen(process.env.PORT || 5001, () => {
   console.log("API+WS running");
 });

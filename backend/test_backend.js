@@ -4,8 +4,8 @@
 
 import WebSocket from "ws";
 
-const BASE_URL = process.env.TEST_BASE_URL || "http://localhost:5000";
-const WS_URL = process.env.TEST_WS_URL || "ws://localhost:5000/ws";
+const BASE_URL = process.env.TEST_BASE_URL || "http://localhost:5001";
+const WS_URL = process.env.TEST_WS_URL || "ws://localhost:5001/ws";
 
 function now() {
   return new Date().toISOString();

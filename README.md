@@ -19,5 +19,9 @@ If you are developing a production application, we recommend using TypeScript wi
 To begin the app, follow these steps (will be updated later for easier use):
 1. clone the repository to your computer
 2. run two terminals - one for frontend, the other for backend
-3. FRONTEND TERMINAL - 'cd frontend' 'npm install' 'npm run dev'
-4. BACKEND TERMINAL - 'cd backend' 'npm install' 'npm run dev'
+3. BACKEND - in the backend folder create a .env file and copy the personally given data there. Make sure your mysql/mariadb server is running (macos - brew services start mysql) (linux - sudo systemctl start mysql)
+4. open a terminal and run this in project root - 'mysql -u root -p < backend/sql/schema.sql'
+4. open two terminals
+5. FRONTEND TERMINAL - 'cd frontend' 'npm install' 'npm run dev'
+6. BACKEND TERMINAL - 'cd backend' 'npm install' 'npm run dev'
+
