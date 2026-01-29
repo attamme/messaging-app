@@ -25,3 +25,4 @@ To begin the app, follow these steps (will be updated later for easier use):
 5. FRONTEND TERMINAL - 'cd frontend' 'npm install' 'npm run dev'
 6. BACKEND TERMINAL - 'cd backend' 'npm install' 'npm run dev'
 
+test account - username: test, email: test@example.com, password: test

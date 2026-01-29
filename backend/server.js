@@ -1,11 +1,18 @@
 import "dotenv/config";
 import http from "http";
 import express from "express";
+import cors from "cors";
 import routes from "./routes/index.js";
 import { attachWs } from "./websocket/ws.js";
 
 const app = express();
+
+app.use(cors({
+  origin: "http://localhost:5173",
+  credentials: true
+}));
 app.use(express.json());
+
 
 app.get("/", (req, res) => res.send("Backend is running. Try /health or /api/..."));
 app.get("/health", (req, res) => res.json({ ok: true }));

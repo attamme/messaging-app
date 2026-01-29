@@ -20,7 +20,7 @@ function App() {
         
         {/* main app (protected) */}
         <Route 
-          path="/app" 
+          path="/channels" 
           element={isLoggedIn ? 
           (
             <div className="main-layout">

@@ -3,21 +3,34 @@ import { Link, useNavigate } from "react-router-dom"
 
 export default function Login({ onLogin }) {
     const navigate = useNavigate()
-    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
 
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
+        setError("")
 
-        if (username === "test"&& password === "password") {
-            onLogin(username);
-        } else {
-            setError("Invalid username or password.");
+        try {
+            const response = await fetch("http://localhost:5001/api/auth/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, password})
+            })
+
+            const data = await response.json()
+            console.log(data)
+
+            if (response.ok) {
+                localStorage.setItem("token", data.token)
+                onLogin(data.user)
+                navigate("/channels")
+            } else {
+                setError(data.message || "Log in failed")
+            }
+        } catch (err) {
+            setError("Can't connect to backend")
         }
-
-        onLogin()
-        navigate("/channels")
     }
 
     return (
@@ -27,8 +40,8 @@ export default function Login({ onLogin }) {
 
                 <form onSubmit={handleLogin}>
                     <div className="input-field">
-                        <label>Username</label>
-                        <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} required />
+                        <label>Email</label>
+                        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
                     </div>
 
                     <div className="input-field">
@@ -51,32 +64,3 @@ export default function Login({ onLogin }) {
         </div>
     )
 }
-        // Simple validation (in real app, validate against backend)
-        /* if (username && password) {
-            onLogin(username);
-        } else {
-            alert("Please enter both username and password.");
-        }
-    };
-
-    return (
-        <div className="login-container">
-            <h2>Login</h2>
-            <form onSubmit={handleLogin}>
-                <div>
-                    <label>Username: </label>
-                    <input
-                        type="text"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)} />
-                </div>
-                <div>
-                    <label>Password: </label>
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)} />
-                </div>
-            </form>
-        </div>    
-    ); */

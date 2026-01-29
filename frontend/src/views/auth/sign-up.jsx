@@ -9,17 +9,29 @@ export default function Signup({ onSignup }) {
     const [confirmPassword, setConfirmPassword] = useState("")
     const [error, setError] = useState("")
 
-    const handleSignup = (e) => {
+    const handleSignup = async (e) => {
         e.preventDefault()
 
-        if (password === confirmPassword) {
-            onSignup(username)
-        } else {
-            setError("Passwords don't match")
-        }
+        try {
+            const response = await fetch("http://localhost:5001/api/auth/register", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, username, password })
+            })
 
-        onSignup()
-        navigate("/channels")
+            const data = await response.json()
+            console.log(data)
+
+            if (response.ok) {
+                localStorage.setItem("token", data.token)
+                onSignup(data.user)
+                navigate("/channels")
+            } else {
+                setError(data.message || "Sign up failed")
+            }
+        } catch (err) {
+            setError("Can't connect to backend")
+        }
     }
 
     return (
