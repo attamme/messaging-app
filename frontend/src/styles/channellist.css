@@ -1,0 +1,29 @@
+.channel-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: left;
+    width: 90%;
+    padding: 8px 12px;
+    margin: 2px 8px;
+    border-radius: 4px;
+    color: var(--bg-channels);
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.channel-item:hover {
+    background-color: #35373c;
+    color: #dbdee1;
+}
+
+.channel-item.active {
+    background-color: #3f4147;
+    color: #ffffff;
+}
+
+.hash {
+    color: #80848e;
+    font-size: 1.2rem;
+    margin-right: 4px;
+}

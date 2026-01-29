@@ -10,6 +10,8 @@ import './App.css';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loading, setLoading] = useState(true)
+  const [activeChannel, setActiveChannel] = useState(null)
+  const [user, setUser] = useState(null)
 
 
   /* token memory */
@@ -59,7 +61,11 @@ function App() {
       <Routes>
 
         {/* public paths */}
-        <Route path="/login" element={<Login onLogin={() => setIsLoggedIn(true)} />} />
+        <Route path="/login" element={<Login onLogin={(userData) => {
+          setUser(userData)
+          setIsLoggedIn(true)
+          }} />
+        } />
         <Route path="/signup" element={<Signup onSignup={() => setIsLoggedIn(true)} />} />
         
         {/* main app (protected) */}
@@ -68,8 +74,8 @@ function App() {
           (
             <div className="main-layout">
               <Sidebar onLogout={handleLogout} />
-              <ChannelList />
-              <ChatArea />
+              <ChannelList onSelectChannel={(channel) => setActiveChannel(channel)} />
+              <ChatArea channel={activeChannel} />
             </div>
           ) : (<Navigate to="/login" />)} />
 
