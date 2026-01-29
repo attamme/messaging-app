@@ -5,53 +5,8 @@
   color: #333;
 }
 
-.sidebar {
-  width: 112px;
-  background-color: #dbdbdb;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 15px 20px;
-  gap: 20px;
-}
-
-.server-icon {
-  width: 72px;
-  height: 72px;
-  border-radius: 25px;
-}
-
-.add-server {
-	background-color:#768d87;
-	border-radius:5px;
-	border:1px solid #566963;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:15px;
-	font-weight:bold;
-	padding:11px 23px;
-	text-decoration:none;
-	text-shadow:0px -1px 0px #2b665e;
-}
-.add-server:hover {
-	background-color:#6c7c7c;
-}
-.add-server:active {
-	position:relative;
-	top:1px;
-}
-
-.channel-list {
-  width: 280px;
-  background-color: #e3e3e3;
-  padding: 20px 10px;
-  border-right: 1px solid #ccc;
-}
-
 .chat-area {
-  flex: 1; /* Võtab kogu vaba ruumi */
+  flex: 1; 
   display: flex;
   flex-direction: column;
   background-color: white;

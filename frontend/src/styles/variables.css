@@ -2,31 +2,32 @@
     /* --- COLORS --- */
 
     /* backgrounds (dark to light) */
-    --bg-sidebar: #1e1f22;      /* Server sidebar */
-    --bg-channels: #2b2d31;     /* Channel list */
-    --bg-chat: #313338;         /* Main chat area */
-    --bg-input: #383a40;        /* Input background */
-    --bg-modifier-selected: #404249; /* Selected element background */
+    --bg-sidebar: #1e1f22;  
+    --bg-channels: #2b2d31;
+    --bg-chat: #313338;
+    --bg-input: #383a40;
+    --bg-modifier-selected: #404249;
 
     /* Accent colors */
-    --brand-color: #5865f2;     /* Discord blue */
+    --brand-color: #5865f2;
     --brand-color-hover: #4752c4;
-    --success-color: #23a559;   /* Green (Verified/Online) */
-    --danger-color: #da373c;    /* Red (Errors/Delete) */
-    --warning-color: #faa61a;   /* Yellow (Warnings) */
+    --success-color: #23a559;
+    --danger-color: #da373c;
+    --warning-color-muted: #fa777a;
+    --warning-color: #faa61a;
 
     /* Text */
-    --text-normal: #dbdee1;     /* Normal text */
-    --text-muted: #949ba4;      /* Helper text (labels, dates) */
-    --text-header: #ffffff;     /* Headers */
-    --text-footer: #b5bac1;     /* Footer text */
-    --text-link: #00a8fc;       /* Links */
+    --text-normal: #dbdee1;
+    --text-muted: #949ba4;
+    --text-header: #ffffff;
+    --text-footer: #b5bac1;
+    --text-link: #00a8fc;
 
-    /* --- SIZES AND RADII --- */
+    /* --- SIZES AND RADIUS --- */
 
-    --radius-avatar: 50%;       /* Rounded profile pictures */
-    --radius-server: 16px;      /* Server icon roundness */
-    --radius-input: 8px;        /* Input boxes and buttons roundness */
+    --radius-avatar: 50%;
+    --radius-server: 16px;
+    --radius-input: 8px;
 
     --sidebar-width: 72px;
     --channel-list-width: 240px;

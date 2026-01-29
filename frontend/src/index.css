@@ -1,6 +1,7 @@
 @import "./styles/variables.css";
 @import "./styles/login.css";
 @import "./styles/button.css";
+@import "./styles/sidebar.css";
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
